@@ -15,5 +15,12 @@ int brick_height=25;
 
 int brick_rows=4;
 int bricks=5;
+int brickSpacingX =175;
+int brickSpacingY =40;
+int offset = 55;
+
+float deadspace = -100;
+
+
 
 Bricks [] [] grid;

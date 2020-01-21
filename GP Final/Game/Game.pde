@@ -13,7 +13,7 @@ void setup() {
 
   for (int i = 0; i < bricks; i++) {
     for (int j = 0; j < brick_rows; j++) {
-      grid[i][j] = new Bricks(i*175+55, j*40, brick_width, brick_height);
+      grid[i][j] = new Bricks(i*brickSpacingX+offset, j*brickSpacingY, brick_width, brick_height);
     }
   }
 }

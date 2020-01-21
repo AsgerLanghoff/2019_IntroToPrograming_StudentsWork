@@ -75,21 +75,29 @@ class ball {
     }
   }
   void b_bounce(Bricks other) {
-    if (y-r <= other.b_y+other.b_h && x > other.b_x && x < other.b_x+other.b_w) {
+    if (y-r <= other.b_y+other.b_h && x >= other.b_x && x <= other.b_x+other.b_w) {
       println("collide");
       ySpeed *= -1;
+      other.b_dead=true;
+      other.b_x=deadspace;
+      other.b_y=deadspace;
     }
-    if (y+r >= other.b_y && x < other.b_x+other.b_w && x > other.b_x) {
+    /*if (y+r >= other.b_y && x < other.b_x+other.b_w && x > other.b_x) {
+     println("collide");
+     ySpeed *= -1;
+     other.b_dead=true;
+     }
+     if ( x-r <= other.b_x+other.b_w && y <= other.b_y+other.b_h && y >= other.b_y) {
+     println("collide");
+     xSpeed *= -1;
+     other.b_dead=true;
+     }
+     */    if ( x+r >= other.b_x+other.b_w && y >= other.b_y+other.b_h && y <= other.b_y) {
       println("collide");
-      ySpeed *= -1;
-    }
-    if ( x-r <= other.b_x+other.b_w && y < other.b_y+other.b_h && y > other.b_y) {
-      println("collide");
-      ySpeed *= -1;
-    }
-    if ( x+r >= other.b_x+other.b_w && y > other.b_y+other.b_h && y < other.b_y) {
-      println("collide");
-      ySpeed *= -1;
+      xSpeed *= -1;
+      other.b_dead=true;
+      other.b_x=deadspace;
+      other.b_y=deadspace;
     }
   }
 }
@@ -98,6 +106,7 @@ class Bricks {
 
   float b_x, b_y;
   float b_w, b_h;
+  boolean b_dead;
 
   Bricks(float tempX, float tempY, float tempW, float tempH) {
     b_x = tempX;
@@ -107,8 +116,10 @@ class Bricks {
   }
 
   void display () {
-    fill(255);
-    rectMode(CORNER);
-    rect(b_x, b_y, b_w, b_h);
+    if (!b_dead) {
+      fill(255);
+      rectMode(CORNER);
+      rect(b_x, b_y, b_w, b_h);
+    }
   }
 }
