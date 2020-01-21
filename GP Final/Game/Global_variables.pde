@@ -10,3 +10,10 @@ int ballY =250;
 int ballR =15;
 int ball_color=#FFFFFF;
 int p_middle=mouseX;
+int brick_width=150;
+int brick_height=25;
+
+int brick_rows=4;
+int bricks=5;
+
+Bricks [] [] grid;

@@ -67,11 +67,48 @@ class ball {
     }
   }
   void p_bounce(Player other) {
-    println(other.x);
-    println(other.y);
+    //   println(other.x);
+    // println(other.y);
     if ( y >= other.y-other.p_height && x < other.x+other.p_width/2 && x > other.x-other.p_width/2) {
       ySpeed *= -1;
       xSpeed = (x - other.x)/10;
     }
+  }
+  void b_bounce(Bricks other) {
+    if (y-r <= other.b_y+other.b_h && x > other.b_x && x < other.b_x+other.b_w) {
+      println("collide");
+      ySpeed *= -1;
+    }
+    if (y+r >= other.b_y && x < other.b_x+other.b_w && x > other.b_x) {
+      println("collide");
+      ySpeed *= -1;
+    }
+    if ( x-r <= other.b_x+other.b_w && y < other.b_y+other.b_h && y > other.b_y) {
+      println("collide");
+      ySpeed *= -1;
+    }
+    if ( x+r >= other.b_x+other.b_w && y > other.b_y+other.b_h && y < other.b_y) {
+      println("collide");
+      ySpeed *= -1;
+    }
+  }
+}
+
+class Bricks {
+
+  float b_x, b_y;
+  float b_w, b_h;
+
+  Bricks(float tempX, float tempY, float tempW, float tempH) {
+    b_x = tempX;
+    b_y = tempY;
+    b_w = tempW;
+    b_h = tempH;
+  }
+
+  void display () {
+    fill(255);
+    rectMode(CORNER);
+    rect(b_x, b_y, b_w, b_h);
   }
 }
