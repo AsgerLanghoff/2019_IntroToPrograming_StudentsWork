@@ -20,7 +20,8 @@ class Player {
 
     fill(p_color);
     rectMode(CENTER);
-    rect(mouseX, y, p_width, p_height, p_transparency);
+    x = mouseX;
+    rect(x, y, p_width, p_height, p_transparency);
   }
 }
 class ball {
@@ -65,10 +66,12 @@ class ball {
       ySpeed *= -1;
     }
   }
-  void p_bounce(Player other){
-    float d= dist(x, y, other.x, other.y);
-    if (d <= r ) {
+  void p_bounce(Player other) {
+    println(other.x);
+    println(other.y);
+    if ( y >= other.y-other.p_height && x < other.x+other.p_width/2 && x > other.x-other.p_width/2) {
       ySpeed *= -1;
+      xSpeed = (x - other.x)/10;
     }
   }
 }

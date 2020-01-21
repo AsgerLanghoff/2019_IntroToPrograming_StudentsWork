@@ -1,15 +1,3 @@
-int p_width =200;
-int p_height =25;
-int p_y=450;
-int p_color =#000000;
-int p_transparency=0;
-float xSpeed =2;
-float ySpeed =2;
-int ballX =500;
-int ballY =250;
-int ballR =15;
-int ball_color=#FFFFFF;
-
 Player myPlayer1;
 
 ball myBall1;
@@ -17,7 +5,7 @@ ball myBall1;
 void setup() {
   size (1000, 500);
   
-  myPlayer1 = new Player(mouseX,p_y,p_width,p_height,p_color,p_transparency);
+  myPlayer1 = new Player(p_middle,p_y,p_width,p_height,p_color,p_transparency);
   
   myBall1 =new ball(ballR,ballX,ballY,ball_color,xSpeed,ySpeed);
 }
