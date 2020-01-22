@@ -5,8 +5,8 @@ int p_color =#000000;
 int p_transparency=0;
 float xSpeed =10;
 float ySpeed =10;
-int ballX =500;
-int ballY =250;
+int ballX = 500;
+int ballY = 250;
 int ballR =15;
 int ball_color=#FFFFFF;
 int p_middle=mouseX;
@@ -21,6 +21,15 @@ int offset = 55;
 
 float deadspace = -100;
 
+int score;
 
+int num = 10;
+int [] trailX = new int [num];
+int [] trailY = new int [num];
+int indexPos = 0;
+
+Player myPlayer1;
+
+ball myBall1;
 
 Bricks [] [] grid;

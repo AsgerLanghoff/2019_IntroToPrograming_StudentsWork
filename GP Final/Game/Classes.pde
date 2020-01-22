@@ -45,54 +45,54 @@ class ball {
 
     fill(ballColor);
     ellipseMode(RADIUS);
-    ellipse(x, y, r, r);
+    ellipse(ballX, ballY, r, r);
   }
   void move() {
 
-    x+=xSpeed;
-    y+=ySpeed;
+    ballX+=xSpeed;
+    ballY+=ySpeed;
   }
   void bounce() {
-    if (x>width-r) {
+    if (ballX>width-r) {
       xSpeed *= -1;
     }
-    if (x<0+r) {
+    if (ballX<0+r) {
       xSpeed *= -1;
     }
-    if (y<0+r) {
+    if (ballY<0+r) {
       ySpeed *= -1;
     }
-    if (y>height-r) {
+    if (ballY>height-r) {
       ySpeed *= -1;
     }
   }
   void p_bounce(Player other) {
     //   println(other.x);
     // println(other.y);
-    if ( y >= other.y-other.p_height && x < other.x+other.p_width/2 && x > other.x-other.p_width/2) {
+    if ( ballY >= other.y-other.p_height && ballX < other.x+other.p_width/2 && ballX > other.x-other.p_width/2) {
       ySpeed *= -1;
-      xSpeed = (x - other.x)/10;
+      xSpeed = (ballX - other.x)/10;
     }
   }
   void b_bounce(Bricks other) {
-    if (y-r <= other.b_y+other.b_h && x >= other.b_x && x <= other.b_x+other.b_w) {
+    if (ballY-r <= other.b_y+other.b_h && ballX >= other.b_x && ballX <= other.b_x+other.b_w) {
       println("collide");
       ySpeed *= -1;
       other.b_dead=true;
       other.b_x=deadspace;
       other.b_y=deadspace;
     }
-    /*if (y+r >= other.b_y && x < other.b_x+other.b_w && x > other.b_x) {
+    /*if (ballY+r >= other.b_y && ballX < other.b_x+other.b_w && ballX > other.b_x) {
      println("collide");
      ySpeed *= -1;
      other.b_dead=true;
      }
-     if ( x-r <= other.b_x+other.b_w && y <= other.b_y+other.b_h && y >= other.b_y) {
+     if ( ballX-r <= other.b_x+other.b_w && ballY <= other.b_y+other.b_h && ballY >= other.b_y) {
      println("collide");
      xSpeed *= -1;
      other.b_dead=true;
      }
-     */    if ( x+r >= other.b_x+other.b_w && y >= other.b_y+other.b_h && y <= other.b_y) {
+     */    if ( ballX+r >= other.b_x+other.b_w && ballY >= other.b_y+other.b_h && ballY <= other.b_y) {
       println("collide");
       xSpeed *= -1;
       other.b_dead=true;
@@ -122,4 +122,7 @@ class Bricks {
       rect(b_x, b_y, b_w, b_h);
     }
   }
+}
+class Scoreboard {
+  
 }
