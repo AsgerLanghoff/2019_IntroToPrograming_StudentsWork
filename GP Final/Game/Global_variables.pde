@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 int p_width =200;
 int p_height =25;
 int p_y=450;
@@ -22,14 +24,18 @@ int offset = 55;
 float deadspace = -100;
 
 int score;
+int scoreX=500;
+int scoreY=250;
 
 int num = 10;
 int [] trailX = new int [num];
 int [] trailY = new int [num];
 int indexPos = 0;
 
-Player myPlayer1;
+SoundFile sound1;
 
+Player myPlayer1;
+Scoreboard myScore;
 ball myBall1;
 
 Bricks [] [] grid;

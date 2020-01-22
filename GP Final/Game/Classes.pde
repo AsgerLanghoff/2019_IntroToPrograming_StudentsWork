@@ -78,26 +78,32 @@ class ball {
     if (ballY-r <= other.b_y+other.b_h && ballX >= other.b_x && ballX <= other.b_x+other.b_w) {
       println("collide");
       ySpeed *= -1;
-      other.b_dead=true;
       other.b_x=deadspace;
       other.b_y=deadspace;
+      score +=1;
+      sound1.play();
     }
-    /*if (ballY+r >= other.b_y && ballX < other.b_x+other.b_w && ballX > other.b_x) {
-     println("collide");
-     ySpeed *= -1;
-     other.b_dead=true;
-     }
-     if ( ballX-r <= other.b_x+other.b_w && ballY <= other.b_y+other.b_h && ballY >= other.b_y) {
-     println("collide");
-     xSpeed *= -1;
-     other.b_dead=true;
-     }
-     */    if ( ballX+r >= other.b_x+other.b_w && ballY >= other.b_y+other.b_h && ballY <= other.b_y) {
+   /* if (ballY+r >= other.b_y && ballX <= other.b_x+other.b_w && ballX >= other.b_x) {
+      xSpeed *= -1;
+      other.b_x=deadspace;
+      other.b_y=deadspace;
+      score +=1;
+      sound1.play();
+    }
+    */if ( ballX-r <= other.b_x+other.b_w && ballX+r >= other.b_x+other.b_w && ballY <= other.b_y+other.b_h && ballY >= other.b_y) {
+      xSpeed *= -1;
+      other.b_x=deadspace;
+      other.b_y=deadspace;
+      score +=1;
+      sound1.play();
+    }
+    if ( ballX+r >= other.b_x+other.b_w && ballX-r <= other.b_x+other.b_w && ballY >= other.b_y+other.b_h && ballY <= other.b_y) {
       println("collide");
       xSpeed *= -1;
-      other.b_dead=true;
       other.b_x=deadspace;
       other.b_y=deadspace;
+      score +=1;
+      sound1.play();
     }
   }
 }
@@ -124,5 +130,14 @@ class Bricks {
   }
 }
 class Scoreboard {
-  
+
+  Scoreboard (int tempScore, int tempX, int tempY) {
+    score=tempScore;
+    scoreX=tempX;
+    scoreY=tempY;
+  }
+  void display() {
+    textSize(100);
+    text(score, scoreX, scoreY);
+  }
 }
