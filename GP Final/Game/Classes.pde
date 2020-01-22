@@ -75,22 +75,21 @@ class ball {
     }
   }
   void b_bounce(Bricks other) {
-    if (ballY-r <= other.b_y+other.b_h && ballX >= other.b_x && ballX <= other.b_x+other.b_w) {
-      println("collide");
+    if (ballY-r <= other.b_y+other.b_h && ballY+r >= other.b_y && ballX >= other.b_x && ballX <= other.b_x+other.b_w) {
       ySpeed *= -1;
       other.b_x=deadspace;
       other.b_y=deadspace;
       score +=1;
       sound1.play();
     }
-   /* if (ballY+r >= other.b_y && ballX <= other.b_x+other.b_w && ballX >= other.b_x) {
+    if (ballY+r >= other.b_y && ballY-r <= other.b_y+other.b_h && ballX <= other.b_x+other.b_w && ballX >= other.b_x) {
       xSpeed *= -1;
       other.b_x=deadspace;
       other.b_y=deadspace;
       score +=1;
       sound1.play();
     }
-    */if ( ballX-r <= other.b_x+other.b_w && ballX+r >= other.b_x+other.b_w && ballY <= other.b_y+other.b_h && ballY >= other.b_y) {
+    if ( ballX-r <= other.b_x+other.b_w && ballX+r >= other.b_x+other.b_w && ballY <= other.b_y+other.b_h && ballY >= other.b_y) {
       xSpeed *= -1;
       other.b_x=deadspace;
       other.b_y=deadspace;
@@ -98,7 +97,6 @@ class ball {
       sound1.play();
     }
     if ( ballX+r >= other.b_x+other.b_w && ballX-r <= other.b_x+other.b_w && ballY >= other.b_y+other.b_h && ballY <= other.b_y) {
-      println("collide");
       xSpeed *= -1;
       other.b_x=deadspace;
       other.b_y=deadspace;
