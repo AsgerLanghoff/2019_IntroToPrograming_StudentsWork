@@ -20,7 +20,7 @@ void setup() {
   gameScreen =false;
   lvlClear = false;
   
-  // initializint the 2d array, and loading the coordinates of all the bricks
+  // initializing the 2d array, and loading the coordinates of all the bricks
   for (int i = 0; i < bricks; i++) {
     for (int j = 0; j < brick_rows; j++) {
       grid[i][j] = new Bricks(i*brickSpacingX+offset, j*brickSpacingY, brick_width, brick_height);
@@ -66,13 +66,15 @@ void draw () {
     }
     
     // defining the trail coordinates in relation to the ball´s
-    trailX[indexPos]=ballX;
+    trailX[indexPos]=ballX; 
     trailY[indexPos]=ballY;
+    // increases the index postition 0 up to 10 and puts them into the array
     indexPos= (indexPos+1) % num;
 
-    // initializing an array to load the trail of the ball in a loop
     for (int i = 0; i < num; i++) {
-      int pos = (indexPos + i) % num;
+      // gets the values from the array
+      int pos = (indexPos + i) % num; 
+      // decreases the radius smaller for each ball
       float r = (ballR+i)/2;
       int transparency =20 +i*20;
       noStroke();
